@@ -1,0 +1,5 @@
+To play game, go inside the Celeste.v1.2.4.1 folder, right click and run Celeste.exe as administrator
+
+If you get any missing dll errors or the game crashes, go inside the _CommonRedist folder and install both NDP462-KB3151802-Web and xnafx40_redist
+
+For more FREE PC games, visit steamunlocked.com

@@ -1,0 +1,357 @@
+Windmanager:
+    StoryWindow:
+    InsWindow:
+    CalWindow:
+    StatsWindow:
+    EndWWindow:
+    EndVWindow:
+    EndSWindow:
+    EndAWindow:
+
+''' app: always refers to the instance of your application. (instance = variable)
+    root: refers to the base widget/template in the current rule
+    self: always refer to the current widget '''
+
+<StoryWindow>:
+    name:"story"
+    GridLayout:
+        cols:1
+        AsyncImage:
+            source: 'StoryWindow_3.png'
+        GridLayout:
+            cols:2
+            size_hint:(0.1,0.1)
+            Button:
+                text: "Next"
+                font_size: 24
+                on_release:
+                    '''Name of the screen currently shown, or the screen to show.
+                    current is a string property that defaults to none"
+                    "in windmanager, storywindow is now going to show instructions window" '''
+                    app.root.current = "ins"
+                    root.manager.transition.direction = "left"
+
+<InsWindow>:
+    name:"ins"
+    GridLayout:
+        cols:1
+        AsyncImage:
+            source: 'Instructions_1.png'
+        GridLayout:
+            cols:2
+            size_hint:(0.1,0.1)
+            Button:
+                text: "Next"
+                font_size: 24
+                on_release:
+                    app.root.current = "cal"
+                    root.manager.transition.direction = "left"
+
+<CalWindow>:
+    name:"cal"
+
+    #id is a property of every widget
+    #obj property name in py file : id, this allows communication with the python side
+    mon: moncheck
+    tue: tuecheck
+    wed: wedcheck
+    thur: thurcheck
+    fri: fricheck
+    sat: satcheck
+    sun: suncheck
+    mon_doc: moncheck_doc
+    tue_doc: tuecheck_doc
+    wed_doc: wedcheck_doc
+    thur_doc: thurcheck_doc
+    fri_doc: fricheck_doc
+    sat_doc: satcheck_doc
+    sun_doc: suncheck_doc
+    mons: monchecks
+    tues: tuechecks
+    weds: wedchecks
+    thurs: thurchecks
+    fris: frichecks
+    sats: satchecks
+    suns: sunchecks
+
+    GridLayout:
+        cols:1
+        rows:6
+        Label:
+            text: "Week: {}".format(root.week)
+        GridLayout:
+            cols:8
+            Label:
+                text:""
+            Label:
+                text: "Monday"
+            Label:
+                text: "Tuesday"
+            Label:
+                text: "Wednesday"
+            Label:
+                text: "Thursday"
+            Label:
+                text: "Friday"
+            Label:
+                text: "Saturday"
+            Label:
+                text: "Sunday"
+        GridLayout:
+            cols:8
+            Label:
+                text:"Food\n(+1pts)"
+                size_hint_x: .20
+            CheckBox:
+                id: moncheck
+                group: moncheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: tuecheck
+                group: tuecheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: wedcheck
+                group: wedcheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: thurcheck
+                group: thurcheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: fricheck
+                group:fricheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: satcheck
+                group: satcheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: suncheck
+                group: suncheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+        GridLayout:
+            cols:8
+            Label:
+                text:"Doctor\n(-2pts)"
+                size_hint_x: .20
+            CheckBox:
+                id: moncheck_doc
+                group: moncheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: tuecheck_doc
+                group:tuecheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: wedcheck_doc
+                group:wedcheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: thurcheck_doc
+                group: thurcheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: fricheck_doc
+                group: fricheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: satcheck_doc
+                group: satcheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: suncheck_doc
+                group: suncheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+        GridLayout:
+            cols:8
+            Label:
+                text:"Rest\n(0pts)"
+                size_hint_x: .20
+            CheckBox:
+                id: monchecks
+                group: moncheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: tuechecks
+                group:tuecheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: wedchecks
+                group:wedcheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: thurchecks
+                group: thurcheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: frichecks
+                group: fricheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: satchecks
+                group: satcheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+            CheckBox:
+                id: sunchecks
+                group: suncheck
+                on_active: root.checkbox_click(self, self.active)
+                size_hint_x: .20
+
+        GridLayout:
+            cols:3
+            size_hint:(0.3,0.3)
+            Label:
+                text: ""
+            Label:
+                text: ""
+            Button:
+                text: "Next Week"
+                on_release:
+                    root.week_counter()
+                    if root.weekk() <= 5: \
+                    #.Process() is added because the kv file does not handle logic
+                    root.manager.screens[3].Process()
+
+<StatsWindow>:
+    name:"stats"
+    AsyncImage:
+        source: 'StatsWindow_1.png'
+    GridLayout:
+        rows:2
+        Label:
+            text:""
+        GridLayout:
+            cols:2
+            rows:3
+            size_hint:(0.25,0.25)
+            Label:
+                text:"Food"
+            Label:
+                text:"{}".format(root.points)
+            Label:
+                text:"Symptoms"
+            Label:
+                text:"{}".format(root.symptoms)
+            Label:
+                text:""
+            Button:
+                text:"Confirm"
+                on_release:
+                    root.manager.screens[3].Button_Press()
+
+<EndWWindow>:
+    name:"end_win"
+    GridLayout:
+        cols:1
+        rows:2
+        AsyncImage:
+            source: 'Endw.png'
+        GridLayout:
+            rows:2
+            size_hint:(0.1,0.1)
+            Label:
+                text: root.t
+            GridLayout:
+                cols:2
+                Button:
+                    text: "Quit"
+                    on_release:
+                        app.get_running_app().stop()
+                Button:
+                    text: "Restart"
+                    on_release:
+                        root.again()
+                        app.root.current = "story"
+                        root.manager.transition.direction = "right"
+
+<EndVWindow>:
+    name: "end_virus"
+    GridLayout:
+        cols:1
+        rows:2
+        AsyncImage:
+            source: 'Endv.png'
+        GridLayout:
+            rows:1
+            size_hint:(0.1,0.1)
+
+            GridLayout:
+                cols:2
+                Button:
+                    text: "Quit"
+                    on_release:
+                        app.get_running_app().stop()
+                Button:
+                    text: "Restart"
+                    on_release:
+                        root.again()
+                        app.root.current = "story"
+                        root.manager.transition.direction = "right"
+
+<EndSWindow>:
+    name: "end_starve"
+    GridLayout:
+        cols:1
+        rows:2
+        AsyncImage:
+            source: 'Ends.png'
+        GridLayout:
+            rows:1
+            size_hint:(0.1,0.1)
+            GridLayout:
+                cols:2
+                Button:
+                    text: "Quit"
+                    on_release:
+                        app.get_running_app().stop()
+                Button:
+                    text: "Restart"
+                    on_release:
+                        root.again()
+                        app.root.current = "story"
+                        root.manager.transition.direction = "right"
+
+<EndAWindow>:
+    name: "end_asymp"
+    GridLayout:
+        cols:1
+        rows:2
+        AsyncImage:
+            source: 'Enda.png'
+        GridLayout:
+            rows:1
+            size_hint:(0.1,0.1)
+
+            GridLayout:
+                cols:2
+                Button:
+                    text: "Quit"
+                    on_release:
+                        app.get_running_app().stop()
+                Button:
+                    text: "Restart"
+                    on_release:
+                        root.again()
+                        app.root.current = "story"
+                        root.manager.transition.direction = "right"
